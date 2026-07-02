@@ -149,6 +149,15 @@ function openDay(dayIdx){
     els.topicList.appendChild(row);
   });
 
+  if(doneCount === day.topics.length && dayIdx < LESSON_DATA.days.length - 1){
+    const nextBtn = document.createElement("button");
+    nextBtn.className = "next-day-btn";
+    nextBtn.type = "button";
+    nextBtn.textContent = "Далі →";
+    nextBtn.addEventListener("click", () => openDay(dayIdx + 1));
+    els.topicList.appendChild(nextBtn);
+  }
+
   window.scrollTo({top: document.querySelector('.route-wrap').offsetTop - 20, behavior:'smooth'});
   renderRouteMap();
 }
